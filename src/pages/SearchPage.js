@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 // The base URL for our backend API.
 // It checks for a Vercel environment variable, otherwise defaults to local development.
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000';
+const API_URL = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:5000';
 
 const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();

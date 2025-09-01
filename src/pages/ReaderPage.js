@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 const ePub = require('epubjs');
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000';
+const API_URL = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:5000';
 
 const ReaderPage = () => {
     const [searchParams] = useSearchParams();
@@ -103,4 +103,3 @@ const ReaderPage = () => {
 };
 
 export default ReaderPage;
-
