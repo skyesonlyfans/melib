@@ -37,6 +37,16 @@ def search_books():
 
     try:
         s = LibgenSearch()
+        
+        #
+        # --- FIX: Override the default mirrors with a more reliable list ---
+        #
+        s.search_mirrors = [
+            "http://libgen.rs",
+            "http://libgen.is",
+            "http://libgen.st",
+        ]
+        
         # Search by title, limiting to the top 50 results for performance.
         results = s.search_title(query)
         
@@ -56,6 +66,8 @@ def search_books():
         
         search_cache[query] = filtered_results # Cache the successful result.
         return jsonify(filtered_results)
+    except requests.exceptions.ConnectionError as e:
+        return jsonify({"error": f"Could not connect to Library Genesis. The mirror may be down. Details: {str(e)}"}), 503
     except Exception as e:
         # If the search fails, return a server error.
         return jsonify({"error": f"An error occurred while searching: {str(e)}"}), 500
