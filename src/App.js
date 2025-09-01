@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchPage from './SearchPage';
-import ReaderPage from './ReaderPage';
+import SearchPage from './pages/SearchPage';
+import ReaderPage from './pages/ReaderPage';
 
 function App() {
   return (
@@ -19,4 +19,3 @@ function App() {
 }
 
 export default App;
-
